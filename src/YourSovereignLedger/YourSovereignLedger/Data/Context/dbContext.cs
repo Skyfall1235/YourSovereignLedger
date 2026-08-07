@@ -6,7 +6,6 @@ namespace YourSovereignLedger.Data.Context;
 public class AppDBContext : DbContext
 {
     public AppDBContext() { }
-
     public DbSet<CatalogItem> CatalogItems { get; set; }
     public DbSet<CommissionSlot> CommissionSlots { get; set; }
     public DbSet<CustomerContactInfo> ContactInfos { get; set; }
