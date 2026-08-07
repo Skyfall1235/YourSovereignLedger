@@ -3,15 +3,14 @@ public static class OrderEnums
 {
     public enum OrderType
     {
-        Custom, Alteration, LineItem
-    }
-    public enum ContactType
-    {
-        Discord, Instagram, Phone, Email, Twitter, X,
-    }
-
-    public enum FulfillmentCategory
-    {
         ReadyMade, CustomCommission, Alteration, Digital
+    }
+    public enum PaymentStatus
+    {
+        Pending, DepositPaid, FullyPaid, Refunded
+    }
+    public enum Status
+    {
+        Queue, InProgress, ClientReview, Approved, Delivered, Canceled
     }
 }
