@@ -1,4 +1,5 @@
-﻿using static YourSovereignLedger.Core.OrderEnums;
+﻿using System;
+using static YourSovereignLedger.Core.OrderEnums;
 
 namespace YourSovereignLedger.Core;
 public class SaleOrder

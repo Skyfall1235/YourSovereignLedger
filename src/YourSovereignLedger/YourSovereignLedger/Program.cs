@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Photino.Blazor;
+using System;
+using YourSovereignLedger.Services;
 
 namespace YourSovereignLedger
 {
@@ -18,6 +19,10 @@ namespace YourSovereignLedger
 
             // register root component and selector
             appBuilder.RootComponents.Add<App>("app");
+            //services(come back with interfaces)
+            appBuilder.Services.AddSingleton<InvoiceGenerationService>();
+            appBuilder.Services.AddSingleton<MetricsService>();
+            appBuilder.Services.AddSingleton<OrderManagementService>();
 
             var app = appBuilder.Build();
 
@@ -26,7 +31,10 @@ namespace YourSovereignLedger
                 .SetIconFile("favicon.ico")
                 .SetTitle("Photino Blazor Sample");
 
-            AppDomain.CurrentDomain.UnhandledException += (sender, error) => { app.MainWindow.ShowMessage("Fatal exception", error.ExceptionObject.ToString()); };
+            AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
+            {
+                app.MainWindow.ShowMessage("Fatal exception", error.ExceptionObject.ToString());
+            };
 
             app.Run();
         }

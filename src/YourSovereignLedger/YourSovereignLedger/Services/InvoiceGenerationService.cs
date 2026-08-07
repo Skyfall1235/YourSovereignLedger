@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using YourSovereignLedger.Data.Context;
 
-namespace YourSovereignLedger.Services
+namespace YourSovereignLedger.Services;
+
+public class InvoiceGenerationService
 {
-    internal class InvoiceGenerationService
-    {
-    }
+    private readonly AppDBContext _dbContext;
+
+    public void GeneratePDFInvoice() { }
+    public void DownloadGeneratedInvoice() { }
+    public void SendEmailWithInvoice() { }
 }
