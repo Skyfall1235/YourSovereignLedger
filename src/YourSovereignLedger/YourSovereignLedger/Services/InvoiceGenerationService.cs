@@ -1,13 +1,14 @@
-﻿
-using YourSovereignLedger.Data.Context;
+﻿using YourSovereignLedger.Data.Context;
 
 namespace YourSovereignLedger.Services;
 
 public class InvoiceGenerationService
 {
-    private readonly AppDBContext _dbContext;
+    private readonly AppDBContext dbContext;
+    private readonly EmailService emailService;
+    private readonly PDFGenerationService pdfGenerationService;
 
-    public void GeneratePDFInvoice() { }
-    public void DownloadGeneratedInvoice() { }
-    public void SendEmailWithInvoice() { }
+    public async void GeneratePDFInvoice() { }
+    public async void DownloadGeneratedInvoice() { }
+    public async void SendEmailWithInvoice() { }
 }

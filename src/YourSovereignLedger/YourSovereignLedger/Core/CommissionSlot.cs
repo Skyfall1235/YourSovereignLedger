@@ -13,4 +13,6 @@ public class CommissionSlot
     public DateOnly? CommissionDateStarted { get; set; }
     public DateOnly? TargetCompletionDate { get; set; }
     public DateTime CommissionDateLastUpdated { get; set; }
+    //linked list part
+    public uint PointerId { get; set; }
 }
