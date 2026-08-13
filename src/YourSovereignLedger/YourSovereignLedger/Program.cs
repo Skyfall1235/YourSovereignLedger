@@ -23,13 +23,14 @@ namespace YourSovereignLedger
             appBuilder.Services.AddSingleton<InvoiceGenerationService>();
             appBuilder.Services.AddSingleton<MetricsService>();
             appBuilder.Services.AddSingleton<OrderManagementService>();
+            appBuilder.Services.AddSingleton<PrivacyStateService>();
 
             var app = appBuilder.Build();
 
             // customize window
             app.MainWindow
                 .SetIconFile("favicon.ico")
-                .SetTitle("Photino Blazor Sample");
+                .SetTitle("Your Sovereign Ledger");
 
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {

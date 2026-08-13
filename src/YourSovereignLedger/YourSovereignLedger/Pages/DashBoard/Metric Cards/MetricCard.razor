@@ -1,0 +1,14 @@
+﻿<div class="metric-card">
+    <span class="metric-label">@Label</span>
+    <h3 class="metric-value">@Value</h3>
+    @if (!string.IsNullOrEmpty(Subtext))
+    {
+        <p class="metric-subtext">@Subtext</p>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public string Label { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Value { get; set; } = string.Empty;
+    [Parameter] public string Subtext { get; set; } = string.Empty;
+}

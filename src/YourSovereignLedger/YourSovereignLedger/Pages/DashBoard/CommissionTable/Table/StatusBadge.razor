@@ -1,0 +1,10 @@
+﻿@using YourSovereignLedger.Core
+<span class="status-badge status-@Status.ToString().ToLower()">
+    <span class="status-dot"></span>
+    @Text
+</span>
+
+@code {
+    [Parameter, EditorRequired] public OrderEnums.Status Status { get; set; } = OrderEnums.Status.Queue;
+    public string Text => Status.ToString();
+}

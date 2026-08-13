@@ -1,0 +1,57 @@
+﻿@page "/queue"
+@using YourSovereignLedger.Pages.DashBoard.CommissionTable.Table
+@using YourSovereignLedger.Pages.DashBoard.Metric_Cards
+@using YourSovereignLedger.Services
+
+
+<div class="ledger-container">
+
+    <header class="ledger-topbar">
+        <div class="privacy-toggle-container">
+            <button class="btn-privacy-toggle" @onclick="TogglePrivacy">
+                @(IsGlobalPrivacyActive ? "Customer Info Hidden" : "Customer Info Visible")
+            </button>
+        </div>
+    </header>
+
+    <section class="metrics-grid">
+        @* REPLACE THIS WITH GENERATED ROWS*@
+        <MetricCard Label="ACTIVE COMMISSIONS" Value="6" Subtext="Across 6 clients" />
+        <MetricCard Label="IN PROGRESS" Value="3" Subtext="Sketching → Rendering" />
+        <MetricCard Label="AWAITING PAYMENT" Value="$150" Subtext="1 invoice outstanding" />
+        <MetricCard Label="QUEUE VALUE" Value="$2,510" Subtext="Total across all works" />
+    </section>
+
+    <hr class="ledger-divider" />
+    <div class="commission-table-wrap">
+    <div class="commission-table-card">
+        <table class="commission-table">
+    <section class="table-container">
+        <CommissionTable>
+    <CommissionRow CustomerName="Odile Fenwick" AvatarInitials="OF" ProjectTitle="Icon Set — 5 familiars"
+                    StatusCode="review" StatusText="Final Review" ProgressPercentage="90"
+                    Fee="300" DueDateText="Due Aug 14" />
+    <CommissionRow CustomerName="Nightingale Guild" AvatarInitials="NG" ProjectTitle="Guild Banner"
+                    StatusCode="render" StatusText="Rendering" ProgressPercentage="70"
+                    Fee="780" DueDateText="Due Sep 10" />
+    @* ...remaining rows... *@
+</CommissionTable>
+
+
+    </section>
+            </table>
+        </div>
+    </div>
+</div>
+@code
+{
+    public bool IsGlobalPrivacyActive { get; private set; } = true;
+
+    public event Action? OnPrivacyStateChanged;
+
+    public void TogglePrivacy()
+    {
+        IsGlobalPrivacyActive = !IsGlobalPrivacyActive;
+        OnPrivacyStateChanged?.Invoke();
+    }
+}

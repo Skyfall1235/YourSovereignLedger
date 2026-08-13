@@ -1,0 +1,47 @@
+﻿/* wwwroot/css/ledger-theme.css */
+:root {
+    --bg-base: #181715; /* Dark slate canvas background */
+    --bg-card: #201f1d; /* Dark leather container fill */
+    --border-card: #34312c; /* Subtle muted brown/grey border */
+    --border-card-highlight: #6e5d32; /* Gold accent top border line */
+
+    --text-primary: #f2efe9; /* Soft off-white */
+    --text-muted: #968f85; /* Muted warm grey */
+    --gold-accent: #d4af37; /* Antique Chronicle Gold */
+    --badge-awaiting-bg: #322b18; /* Dark Amber pill */
+    --badge-awaiting-fg: #d99b26; /* Warm Amber text */
+}
+
+/* Card Styling */
+.metric-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-top: 1px solid var(--border-card-highlight);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.metric-value {
+    font-family: 'Georgia', serif; /* Gives the chronicle book font feel */
+    font-size: 2.25rem;
+    color: var(--text-primary);
+    margin: 0.5rem 0 0.25rem 0;
+}
+
+/* Privacy Mask Styling */
+.privacy-mask.is-blurred {
+    filter: blur(4px);
+    user-select: none;
+    transition: filter 0.2s ease;
+}
+
+    .privacy-mask.is-blurred:hover {
+        filter: blur(0px);
+    }

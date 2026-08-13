@@ -1,0 +1,37 @@
+﻿@using YourSovereignLedger.Services
+@inject PrivacyStateService PrivacyService
+@implements IDisposable
+
+<span class="privacy-mask @(IsMasked ? "is-blurred" : "is-revealed")"
+      @onmouseenter="HandleMouseEnter"
+      @onmouseleave="HandleMouseLeave">
+    @if (IsMasked)
+    {
+        <span class="masked-content">••••••••</span>
+    }
+    else
+    {
+        <span class="unmasked-content">@Value</span>
+    }
+</span>
+
+@code {
+    [Parameter, EditorRequired] public string Value { get; set; } = string.Empty;
+
+    private bool isHovered = false;
+
+    private bool IsMasked => PrivacyService.IsGlobalPrivacyActive && !isHovered;
+
+    protected override void OnInitialized()
+    {
+        PrivacyService.OnPrivacyStateChanged += StateHasChanged;
+    }
+
+    private void HandleMouseEnter() => isHovered = true;
+    private void HandleMouseLeave() => isHovered = false;
+
+    public void Dispose()
+    {
+        PrivacyService.OnPrivacyStateChanged -= StateHasChanged;
+    }
+}
