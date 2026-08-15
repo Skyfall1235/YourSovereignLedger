@@ -11,6 +11,11 @@ public static class OrderEnums
     }
     public enum Status
     {
-        Queue, InProgress, ClientReview, Approved, Delivered, Canceled
+        Queue = 1,
+        InProgress = 2,
+        ClientReview = 3,
+        Approved = 4,
+        Delivered = 5,
+        Canceled = 0
     }
 }

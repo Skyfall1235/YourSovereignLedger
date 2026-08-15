@@ -1,31 +1,18 @@
-﻿@* 
-    CommissionTable
-    Owns the card chrome + column header. Rows are passed in as child content
-    so callers stay in control of what gets rendered (and, later, how it's looped).
-*@
-<div class="commission-table-card">
-    <table class="commission-table">
-        <colgroup>
-            <col style="width:35%" />
-            <col style="width:19%" />
-            <col style="width:20%" />
-            <col style="width:12%" />
-            <col style="width:14%" />
-        </colgroup>
-        <thead>
-            <tr>
-                <th scope="col">Client</th>
-                <th scope="col">Status</th>
-                <th scope="col">Progress</th>
-                <th scope="col">Fee</th>
-                <th scope="col">Due</th>
-            </tr>
-        </thead>
-        <tbody>
-            @ChildContent
-        </tbody>
-    </table>
-</div>
+﻿<table>
+    <thead>
+        <tr>
+            <th>CLIENT</th>
+            <th>STATUS</th>
+            <th>PROGRESS</th>
+            <th>FEE</th>
+            <th>DUE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @* Dynamic content/rows injected here *@
+        @ChildContent
+    </tbody>
+</table>
 
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; }

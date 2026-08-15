@@ -2,6 +2,7 @@
 @using YourSovereignLedger.Pages.DashBoard.CommissionTable.Table
 @using YourSovereignLedger.Pages.DashBoard.Metric_Cards
 @using YourSovereignLedger.Services
+@using YourSovereignLedger.Core
 
 
 <div class="ledger-container">
@@ -16,32 +17,25 @@
 
     <section class="metrics-grid">
         @* REPLACE THIS WITH GENERATED ROWS*@
-        <MetricCard Label="ACTIVE COMMISSIONS" Value="6" Subtext="Across 6 clients" />
+        <MetricCard Label="ACTIVE COMMISSIONS" Value="6" Subtext="Across current clients" />
         <MetricCard Label="IN PROGRESS" Value="3" Subtext="Sketching → Rendering" />
-        <MetricCard Label="AWAITING PAYMENT" Value="$150" Subtext="1 invoice outstanding" />
+        <MetricCard Label="AWAITING PAYMENT" Value="$150" Subtext="THIS SHOULDNT HAVE SUBTEXT" />
         <MetricCard Label="QUEUE VALUE" Value="$2,510" Subtext="Total across all works" />
     </section>
 
     <hr class="ledger-divider" />
-    <div class="commission-table-wrap">
-    <div class="commission-table-card">
-        <table class="commission-table">
-    <section class="table-container">
-        <CommissionTable>
-    <CommissionRow CustomerName="Odile Fenwick" AvatarInitials="OF" ProjectTitle="Icon Set — 5 familiars"
-                    StatusCode="review" StatusText="Final Review" ProgressPercentage="90"
-                    Fee="300" DueDateText="Due Aug 14" />
-    <CommissionRow CustomerName="Nightingale Guild" AvatarInitials="NG" ProjectTitle="Guild Banner"
-                    StatusCode="render" StatusText="Rendering" ProgressPercentage="70"
-                    Fee="780" DueDateText="Due Sep 10" />
-    @* ...remaining rows... *@
-</CommissionTable>
-
-
-    </section>
-            </table>
+        <div class="commission-table-wrap">
+            <div class="commission-table-card">
+                <CommissionTable>
+                    <CommissionRow 
+                    CustomerName="CustomerName"
+                    Status="Core.OrderEnums.Status.InProgress"
+                    ProgressPercentage="10"
+                    Fee="12"
+                    Due="3" />
+                </CommissionTable>
+            </div>
         </div>
-    </div>
 </div>
 @code
 {
@@ -54,4 +48,18 @@
         IsGlobalPrivacyActive = !IsGlobalPrivacyActive;
         OnPrivacyStateChanged?.Invoke();
     }
+
+    //metric Cards
+    int ActiveCommissions = 0;
+    int InProgressCommissions = 0;
+    decimal AwaitingPayment = 0;
+    decimal QueueValue = 0;
+
+    public List<CommissionSlot> CurrentQueue = new();
+    public void FetchCurrentQueue()
+    {
+        
+    }
+
+
 }

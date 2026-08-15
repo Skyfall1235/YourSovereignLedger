@@ -1,47 +1,39 @@
-﻿@using YourSovereignLedger.Pages.DashBoard.CommissionTable.Table_Extras
-<tr class="ledger-row">
-    <td class="col-client" data-label="Client">
-        <div class="client-cell">
-            <div class="client-avatar" aria-hidden="true">@AvatarInitials</div>
-            <div class="client-details">
-                <div class="client-name">
-                    <PrivacyMask Value="@CustomerName" />
-                </div>
-                <div class="client-project">@ProjectTitle</div>
-            </div>
+﻿@using YourSovereignLedger.Core
+<tr>
+    <!-- CLIENT COLUMN -->
+    <td>
+        @* TODO: Replace raw text with <PrivacyMask Value="@CustomerName" /> later *@
+        <PrivacyMask Value="@CustomerName"/>
+    </td>
+
+    <!-- STATUS COLUMN -->
+    <td>
+        <StatusBadge Status="@Status"></StatusBadge>
+    </td>
+
+    <!-- PROGRESS COLUMN -->
+    <td>
+        <div>
+            <progress value="@ProgressPercentage" max="100"></progress>
+            <span>@ProgressPercentage%</span>
         </div>
     </td>
 
-    <td class="col-status" data-label="Status">
-        <StatusBadge Status="@StatusCode" Text="@StatusText" />
+    <!-- FEE COLUMN (Paid) -->
+    <td>
+        @Fee.ToString("C")
     </td>
 
-    <td class="col-progress" data-label="Progress">
-        <div class="progress-wrapper">
-            <div class="progress-bar-track">
-                <div class="progress-bar-fill" style="width:@(ProgressPercentage)%"></div>
-            </div>
-            <span class="progress-text">@(ProgressPercentage)%</span>
-        </div>
-    </td>
-
-    <td class="col-fee" data-label="Fee">
-        <span class="currency-value">$@Fee.ToString("N0")</span>
-    </td>
-
-    <td class="col-due" data-label="Due">
-        <span class="due-date">@DueDateText</span>
+    <!-- DUE COLUMN (Remaining Balance) -->
+    <td>
+        @Due.ToString("C")
     </td>
 </tr>
 
 @code {
-    // TODO: replace individual parameters with a CommissionModel once the data layer is in.
-    [Parameter, EditorRequired] public string CustomerName { get; set; } = string.Empty;
-    [Parameter] public string AvatarInitials { get; set; } = "??";
-    [Parameter] public string ProjectTitle { get; set; } = string.Empty;
-    [Parameter] public string StatusCode { get; set; } = "in-progress";
-    [Parameter] public string StatusText { get; set; } = "In Progress";
-    [Parameter] public int ProgressPercentage { get; set; }
+    [Parameter] public string CustomerName { get; set; } = string.Empty;
+    [Parameter] public OrderEnums.Status Status { get; set; }
+    public int ProgressPercentage => (int)Status * 20;
     [Parameter] public decimal Fee { get; set; }
-    [Parameter] public string DueDateText { get; set; } = string.Empty;
+    [Parameter] public decimal Due { get; set; }
 }
