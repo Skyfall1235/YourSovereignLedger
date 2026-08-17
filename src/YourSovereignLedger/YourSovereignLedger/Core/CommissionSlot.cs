@@ -5,14 +5,12 @@ namespace YourSovereignLedger.Core;
 
 public class CommissionSlot
 {
-    public uint Id { get; set; }
-    public uint CustomerId { get; set; }
-    public uint SaleOrderId { get; set; }
-    public uint QueuePosition { get; set; }
+    //guid
+    public Guid Id { get; set; }
+    public Guid CustomerId { get; set; }
+    public Guid SaleOrderId { get; set; }
     public Status OrderStatus { get; set; }
     public DateOnly? CommissionDateStarted { get; set; }
     public DateOnly? TargetCompletionDate { get; set; }
     public DateTime CommissionDateLastUpdated { get; set; }
-    //linked list part
-    public uint PointerId { get; set; }
 }

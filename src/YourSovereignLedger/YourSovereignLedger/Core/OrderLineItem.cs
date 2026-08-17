@@ -1,10 +1,12 @@
-﻿namespace YourSovereignLedger.Core;
+﻿using System;
+
+namespace YourSovereignLedger.Core;
 
 public class OrderLineItem
 {
-    public uint Id { get; set; }
-    public uint SaleOrderId { get; set; }
-    public uint? CatalogItemId { get; set; }
+    public Guid Id { get; set; }
+    public Guid SaleOrderId { get; set; }
+    public Guid? CatalogItemId { get; set; }
     public string ItemTitleSpanshot { get; set; }
     public decimal UnitPrice { get; set; }
     public decimal Quantity { get; set; }

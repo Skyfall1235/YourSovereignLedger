@@ -30,7 +30,6 @@
                     <CommissionRow 
                     CustomerName="CustomerName"
                     Status="Core.OrderEnums.Status.InProgress"
-                    ProgressPercentage="10"
                     Fee="12"
                     Due="3" />
                 </CommissionTable>
@@ -56,6 +55,7 @@
     decimal QueueValue = 0;
 
     public List<CommissionSlot> CurrentQueue = new();
+
     public void FetchCurrentQueue()
     {
         
